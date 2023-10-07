@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --primaryTextColour: #222222;
+    --primary: #421196;
+    --primary-shade: #5E21D8;
+    --primary-light: #682FDA;
+    --secondary: #FBE077;
+    --gray: #898989;
+    --roboto: 'Roboto', sans-serif;
+}
+main{
+    height: 100vh;
+    width: 100%; 
+    display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h1, h2, h3, h4, h5{
+    font-family: var(--roboto);
+}
+.hero-sect{
+    width: 40%;
+    height: 130vh;
+    background: linear-gradient(260deg, #421196 0%, #7f58cf 100%);
+    background-color: var(--primary);
+}
+.hero-sect img{
+    width: 70%;
+    height: 60%;
+    margin: 20% 15%;
+}
+.onboarding-sect{
+    width: 65%;
+    height: 130vh;
+}
+.home-div{
+    width: 80%;
+    height: 7.5%;
+    margin-inline: auto;
+    margin-block: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.home-div img{
+    height: 100%;
+}
+.form-div{
+    width: 80%;
+    height: 80%;
+    box-shadow: 3px 3px 3px 3px rgba(159, 129, 183, 0.25);
+    margin-inline: auto;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding-block: 1rem;
+}
+.form .input{
+    width: 75%;
+    padding: 0.5rem;
+    border: 1px solid var(--primary);
+    border-radius: 7px;
+}
+.form .input:hover{
+    box-shadow: 2px 2px 2px 2px rgba(128, 105, 148, 0.25);
+}
+.addons{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    color: var(--primary);
+}
+.addons span input{
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.5rem;
+}
+.loginbtn{
+    width: 75%;
+    padding: 0.7rem 0;
+    color: var(--primary);
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 7px;
+}
+.loginbtn:hover{
+    box-shadow: 2px 2px 2px 2px rgba(192, 165, 66, 0.25);
+    background-color: #fcd84c;
+}
+a{
+    text-decoration: none;
+    color: var(--primary);
+}
+hr{
+    margin-block: 1rem;
+    width: 75%;
+}
+.form p{
+    display: inline-block;
+    padding-inline: 0.5rem;
+    background-color: #ffffff;
+    margin-top: -3.2rem;
+}
+#googlebtn{
+    padding: 0.2rem 0.5rem;
+    background-color: #ffffff;
+    color: var(--primary);
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px 2px rgba(159, 129, 183, 0.25);
+}
+
+/* signup section */
+.fullmane{
+    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/* responsiveness mobile phones */
+@media screen and (max-width: 500px) {
+    main{
+        height: max-content;
+        flex-direction: column;
+    }
+    .hero-sect{
+        width: 100%;
+        height: 70vh;
+        background: linear-gradient(20deg, #421196 0%, #7f58cf 100%)
+    }
+    .onboarding-sect{
+        width: 100%;
+        height: max-content;
+    }
+    .home-div{
+        width: 90%;
+        margin-inline: auto;
+        margin-block: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .form-div{
+        width: 90%;
+        margin-bottom: 1rem;
+    }
+    .addons{
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* signup page */
+    .fullmane{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}

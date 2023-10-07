@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <link rel="stylesheet" href="../css/onboarding.css">
+</head>
+<body>
+    <main class="onboarding-main">
+        <div class="hero-sect">
+            <img src="../assets/login-hero-img.png" alt="">
+        </div>
+        <div class="onboarding-sect">
+            <div class="home-div">
+                <img src="../assets/logo.png" alt="selfreka logo">
+                <img src="../assets/ant-design_home-filled.svg" alt="">
+            </div>
+            <div class="form-div">
+                <form action="" method="post" class="form">
+                    <h1>Welcome Back</h1>
+                    <h4>Login to continue</h4>
+                    <input type="email" name="email" id="email" placeholder="Email Address" class="input">
+                    <input type="password" name="password" id="password" placeholder="Password" class="input">
+                    <div class="addons">
+                        <span><input type="checkbox" name="rememberme" id="rememberme">Remember me</span>
+                        <a href="#">Forgot your  Password?</a>
+                    </div>
+                    <button type="submit" class="loginbtn">Login</button>
+                    <hr>
+                    <p>or continue with</p>
+                    <button id="googlebtn">
+                        <img src="../assets/google-icon.svg" alt="google-icon">
+                        <span>Google</span>
+                    </button>
+                    <h5>Don’t have an account? <a href="#">Sign Up</a></h5>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAhYR3J4zRZzLoe5J-c5vaIpmT85NW-NQY",
+            authDomain: "uanddoc.firebaseapp.com",
+            projectId: "uanddoc",
+            storageBucket: "uanddoc.appspot.com",
+            messagingSenderId: "928013426861",
+            appId: "1:928013426861:web:aaacbfe9b582b0e336a624",
+            measurementId: "G-84FFBCFFX5"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider()
+
+        provider.setCustomParameters({ prompt: 'select_account' });
+
+
+        const logInButton = document.querySelector('#googlebtn')
+        // console.log(logInButton);
+
+        const userSignIn = async () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user
+                    console.log(user, 'signed in');
+                    if (result) {
+                        alert('log in sucessful')
+                    }
+                }).catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message
+                })
+        }
+
+
+        const userSignOut = async () => {
+            signOut(auth).then(() => {
+                alert("You have logged out successfully!");
+            }).catch((error) => { })
+        }
+        logInButton.addEventListener('click', userSignIn);
+</script>
+</html>
