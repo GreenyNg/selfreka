@@ -43,56 +43,36 @@
         </div>
     </main>
 </body>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    // Replace 'YOUR_CLIENT_ID' with your actual Google API Client ID
+    const CLIENT_ID = '516134491167-kvd4rkeouqrl59ihtcm4ibg8n07pp8q6.apps.googleusercontent.com';
 
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+    // Function to initialize the Google Sign-In API
+    function initGoogleSignIn() {
+        gapi.load('auth2', () => {
+            gapi.auth2.init({
+                client_id: CLIENT_ID,
+            });
+        });
+    }
 
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAhYR3J4zRZzLoe5J-c5vaIpmT85NW-NQY",
-            authDomain: "uanddoc.firebaseapp.com",
-            projectId: "uanddoc",
-            storageBucket: "uanddoc.appspot.com",
-            messagingSenderId: "928013426861",
-            appId: "1:928013426861:web:aaacbfe9b582b0e336a624",
-            measurementId: "G-84FFBCFFX5"
-        };
+    // Function to handle Google sign-in
+    function handleGoogleSignIn() {
+        const auth2 = gapi.auth2.getAuthInstance();
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
-        const provider = new GoogleAuthProvider()
+        auth2.signIn().then((googleUser) => {
+            const idToken = googleUser.getAuthResponse().id_token;
+            // Send the 'idToken' to your server for verification and user creation
+            // You can also access user information like googleUser.getBasicProfile()
+        });
+    }
 
-        provider.setCustomParameters({ prompt: 'select_account' });
+    // Attach a click event listener to the Google sign-in button
+    document.getElementById('googlebtn').addEventListener('click', handleGoogleSignIn);
 
-
-        const logInButton = document.querySelector('#googlebtn')
-        // console.log(logInButton);
-
-        const userSignIn = async () => {
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    const user = result.user
-                    console.log(user, 'signed in');
-                    if (result) {
-                        alert('log in sucessful')
-                    }
-                }).catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message
-                })
-        }
-
-
-        const userSignOut = async () => {
-            signOut(auth).then(() => {
-                alert("You have logged out successfully!");
-            }).catch((error) => { })
-        }
-        logInButton.addEventListener('click', userSignIn);
+    // Initialize Google Sign-In when the page loads
+    initGoogleSignIn();
 </script>
+
 </html>

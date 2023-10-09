@@ -12,7 +12,7 @@
     --roboto: 'Roboto', sans-serif;
 }
 main{
-    height: 100vh;
+    height: 100%;
     width: 100%; 
     display: flex;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5{
     gap: 1.5rem;
     padding-block: 1rem;
 }
-.form .input{
+.input{
     width: 75%;
     padding: 0.5rem;
     border: 1px solid var(--primary);
@@ -120,12 +120,110 @@ hr{
     border-radius: 7px;
     box-shadow: 2px 2px 2px 2px rgba(159, 129, 183, 0.25);
 }
-
 /* signup section */
 .fullmane{
     width: 75%;
     display: flex;
     justify-content: space-evenly;
+}
+/* forgot password section */
+.onboarding-main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.password-hero-sect{
+    width: 40%;
+    height: 100vh;
+    background: linear-gradient(260deg, #421196 0%, #7f58cf 100%);
+    background-color: var(--primary);
+}
+.password-hero-sect img{
+    width: 80%;
+    height: 50%;
+    margin: 30% 10%;
+}
+.passwordonboarding-sect{
+    width: 60%;
+    height: 100vh;
+}
+/* reset password popup */
+.resetpopup{
+    width: 80%;
+    height: 60%;
+    padding-block: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px 2px rgba(159, 129, 183, 0.25);
+    margin-inline: auto;
+}
+.resetpopup2{
+    width: 80%;
+    height: 60%;
+    padding-block: 2rem;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px 2px rgba(159, 129, 183, 0.25);
+    margin-inline: auto;
+}
+.newpassword-div{
+    width: 80%;
+    height: 60%;
+    padding-block: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px 2px rgba(159, 129, 183, 0.25);
+    margin-inline: auto;
+}
+.successpopup{
+    width: 80%;
+    height: 60%;
+    padding-block: 2rem;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 2px 2px 2px 2px rgba(159, 129, 183, 0.25);
+    margin-inline: auto;
+    color: var(--primary);
+}
+.resetpopup button, .resetpopup2 button, .newpassword-div button, .successpopup button{
+    padding: 0.5rem 2rem;
+    color: var(--primary);
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--secondary);
+}
+.newpassword-div{
+    display: none;
+}
+.resetpopup button:hover, .resetpopup2 button:hover, .newpassword-div button:hover{
+    box-shadow: 2px 2px 2px 2px rgba(192, 165, 66, 0.25);
+    background-color: #fcd84c;
+}
+#sendbtn, #resetbtn2{
+    display: none;
+}
+#code-div{
+    display: none;
+    justify-content: center;
+}
+.end{
+    display: flex;
+    justify-content: end;
+    color: var(--gray);
+    margin-right: 13%;
+    margin-top: -1.3rem;
+}
+.end i{
+    margin: 0.1rem 0.5rem;
 }
 
 
