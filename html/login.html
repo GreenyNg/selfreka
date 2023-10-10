@@ -31,64 +31,74 @@
                     <button type="submit" class="loginbtn">Login</button>
                     <hr>
                     <p>or continue with</p>
-                    <button id="googlebtn">
-                        <img src="../assets/google-icon.svg" alt="google-icon">
-                        <span>Google</span>
-                    </button>
-                    <h5>Don’t have an account? <a href="#">Sign Up</a></h5>
                 </form>
+                <button id="googlebtn">
+                    <img src="../assets/google-icon.svg" alt="google-icon">
+                    <span>Google</span>
+                </button>
+                <h5>Don’t have an account? <a href="#">Sign Up</a></h5>
             </div>
         </div>
     </main>
 </body>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<!-- html
-Copy code -->
-<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
 <script type="module">
-
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-
+    // import { GoogleAuthProvider } from "firebase/auth";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
     const firebaseConfig = {
-            apiKey: "AIzaSyDBrELlgx34udawZ5RalxP2p4Ow-eNYz6k",
-            authDomain: "selfreka.firebaseapp.com",
-            projectId: "selfreka",
-            storageBucket: "selfreka.appspot.com",
-            messagingSenderId: "selfreka.appspot.com",
-            appId: "1:102124549847:web:9100ff80cc480bcc8fa292",
-            measurementId: "G-DX43ED575M"
-        };
+        apiKey: "AIzaSyDBrELlgx34udawZ5RalxP2p4Ow-eNYz6k",
+        authDomain: "selfreka.firebaseapp.com",
+        projectId: "selfreka",
+        storageBucket: "selfreka.appspot.com",
+        messagingSenderId: "102124549847",
+        appId: "1:102124549847:web:9100ff80cc480bcc8fa292",
+        measurementId: "G-DX43ED575M"
+    };
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = getAuth();
-        const provider = new GoogleAuthProvider();
-        provider.setCustomParameters({ prompt: 'select_account' });
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    console.log(provider)
 
-        const logInButton = document.querySelector('#googlebtn');
-        console.log(logInButton)
+    provider.setCustomParameters({ prompt: 'select_account' });
 
-            const userSignIn = async () => {
-                signInWithPopup(auth, provider)
-                    .then((result) => {
-                        const user = result.user
-                        console.log(user, 'signed in');
-                        if (result) {
-                            alert('sign up sucessful')
-                        }
-                    }).catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message
-                    })
-            }
-            const userSignOut = async () => {
-                signOut(auth).then(() => {
-                    alert("You have signed out successfully!");
-                }).catch((error) => { })
-            }
-        logInButton.addEventListener('click', userSignIn);
+    const googlebtn = document.querySelector('#googlebtn')
+    console.log(googlebtn)
+
+    const userSignIn = async () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log(user, 'signed in');
+                if (result) {
+                    alert('log in sucessful')
+                }
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+    }
+
+    const userSignOut = async () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+    googlebtn.addEventListener('click', userSignIn)
 </script>
 </html>

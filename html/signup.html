@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signup page</title>
     <link rel="stylesheet" href="../css/onboarding.css">
 </head>
+
 <body>
     <main class="onboarding-main">
         <div class="hero-sect">
@@ -26,53 +28,84 @@
                     </div>
                     <input type="email" name="email" id="email" placeholder="Email Address" class="input">
                     <input type="password" name="password" id="password" placeholder="Password" class="input">
-                    <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="input">
+                    <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password"
+                        class="input">
                     <div class="addons">
-                    <input type="checkbox" name="rememberme" id="rememberme"><small>Creating an account means you are okay with our Terms of Services, Privacy Policy, and our conditions.</small>
+                        <input type="checkbox" name="rememberme" id="rememberme"><small>Creating an account means you
+                            are okay with our Terms of Services, Privacy Policy, and our conditions.</small>
                     </div>
                     <button type="submit" class="loginbtn">Sign Up</button>
                     <hr>
                     <p>or continue with</p>
-                    <button id="googlebtn">
-                        <img src="../assets/google-icon.svg" alt="google-icon">
-                        <span>Google</span>
-                    </button>
-                    <h5>Already have an account? <a href="#">Login</a></h5>
                 </form>
+                <button id="googlebtn">
+                    <img src="../assets/google-icon.svg" alt="google-icon">
+                    <span>Google</span>
+                </button>
+                <h5>Already have an account? <a href="../html/login.html">Login</a></h5>
             </div>
         </div>
     </main>
 </body>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script>
-    // Replace 'YOUR_CLIENT_ID' with your actual Google API Client ID
-    const CLIENT_ID = '516134491167-kvd4rkeouqrl59ihtcm4ibg8n07pp8q6.apps.googleusercontent.com';
+<script type="module">
+    // import { GoogleAuthProvider } from "firebase/auth";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
-    // Function to initialize the Google Sign-In API
-    function initGoogleSignIn() {
-        gapi.load('auth2', () => {
-            gapi.auth2.init({
-                client_id: CLIENT_ID,
+    const firebaseConfig = {
+        apiKey: "AIzaSyDBrELlgx34udawZ5RalxP2p4Ow-eNYz6k",
+        authDomain: "selfreka.firebaseapp.com",
+        projectId: "selfreka",
+        storageBucket: "selfreka.appspot.com",
+        messagingSenderId: "102124549847",
+        appId: "1:102124549847:web:9100ff80cc480bcc8fa292",
+        measurementId: "G-DX43ED575M"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    console.log(provider)
+
+    provider.setCustomParameters({ prompt: 'select_account' });
+
+    const googlebtn = document.querySelector('#googlebtn')
+    console.log(googlebtn)
+
+    const userSignIn = async () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log(user, 'signed in');
+                if (result) {
+                    alert('log in sucessful')
+                }
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
             });
-        });
     }
 
-    // Function to handle Google sign-in
-    function handleGoogleSignIn() {
-        const auth2 = gapi.auth2.getAuthInstance();
-
-        auth2.signIn().then((googleUser) => {
-            const idToken = googleUser.getAuthResponse().id_token;
-            // Send the 'idToken' to your server for verification and user creation
-            // You can also access user information like googleUser.getBasicProfile()
+    const userSignOut = async () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
         });
     }
-
-    // Attach a click event listener to the Google sign-in button
-    document.getElementById('googlebtn').addEventListener('click', handleGoogleSignIn);
-
-    // Initialize Google Sign-In when the page loads
-    initGoogleSignIn();
+    googlebtn.addEventListener('click', userSignIn)
 </script>
-
 </html>
