@@ -225,6 +225,11 @@ hr{
 .end i{
     margin: 0.1rem 0.5rem;
 }
+.form-div h5, .form-div #googlebtn{
+    margin-inline: auto;
+    text-align: center;
+    margin-top: 1rem;
+}
 
 
 /* responsiveness mobile phones */
