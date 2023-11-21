@@ -24,6 +24,20 @@ h1, h2, h3, h4, h5{
     width: 40%;
     height: 130vh;
     background: linear-gradient(260deg, #421196 0%, #7f58cf 100%);
+    background-image: url('../assets/signupimg.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--primary);
+}
+.hero-sectlogin{
+    width: 40%;
+    height: 130vh;
+    background: linear-gradient(260deg, #421196 0%, #7f58cf 100%);
+    background-image: url('../assets/loginhero.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-color: var(--primary);
 }
 .hero-sect img{

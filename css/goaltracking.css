@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    --primaryTextColour: #222222;
+    --primary: #421196;
+    --primary-shade: #5E21D8;
+    --primary-light: #682FDA;
+    --secondary: #FBE077;
+    --gray: #898989;
+    --danger: #FF5252;
+    --roboto: 'Roboto', sans-serif;
+}
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h1, h2, h3, h4, h5{
+    font-family: var(--roboto);
+}
+header{
+    height: 12%;
+    box-shadow: 2px 2px 2px rgba(12, 5, 15, 0.2);
+}
+nav{
+    height: 100%;
+    display: flex;
+    margin: 0 1.3rem;
+    justify-content: space-between;
+}
+.navprofilesdiv{
+    display: flex;
+    width: 80%;
+    justify-content: end;
+    gap: 1rem;
+    align-items: center;
+}
+#searchinp, #cSearchinp{
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--primary-shade);
+    font-size: 1.2rem;
+}
+#searchinp:focus, #cSearchinp:focus{
+    outline: none;
+}
+#navNotificationBell{
+    font-size: 2rem;
+    margin-inline: 1rem;
+    color: var(--gray);
+    font-weight: 400;
+}
+#searchicondiv, .cSearchicondiv{
+    position: relative;
+}
+#searchicon{
+    position: absolute;
+    left: 0.8rem;
+    top: -0.6rem;
+    color: var(--gray);
+    font-size: 1.4rem;
+}
+.navprofilediv{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+/* .navprofilesdiv p{
+    width: 80%;
+} */
+.navprofilediv img{
+    width: 100%;
+    height: 10%;
+    border-radius: 50%;
+}
+
+/* mmain section div */
+.gtmain{
+    display: flex;
+}
+.asidesec{
+    width: 25%;
+    height: 87.8vh;
+    /* background-color: var(--primary); */
+    background: linear-gradient(260deg, #421196 0%, #795CD0 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5rem;
+}
+.headerdiv{
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+}
+.mainnavdivs{
+    margin-inline: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+}
+.mainnavdivs:hover{
+    cursor: pointer;
+}
+.logout{
+    color: var(--secondary);
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.mainSec{
+    padding-top: 1rem;
+    padding-left: 4rem;
+    display: none;
+}
+.communitymainSec{
+    padding-top: 1rem;
+    padding-left: 4rem;
+    display: none;
+}
+.presentLocationnav{
+    display: flex;
+    color: var(--primary);
+    gap: 0.8rem;
+}
+.presentLocationnav p, .presentLocationnav h4{
+    margin-bottom: 0 !important;
+}
+/* main section */
+.mainParent{
+    display: flex;
+    margin-top: 3rem;
+}
+.mainasidediv{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: 2px 2px 2px 2px rgba(12, 5, 15, 0.2);
+    height: max-content;
+    border-radius: 10px;
+    padding: 2rem;
+}
+.mainasidediv div{
+    width: max-content;
+}
+.mainasidediv div:hover{
+    cursor: pointer;
+}
+.selectedmainasidediv{
+    display: flex;
+    gap: 0.9rem;
+    /* color: var(--primary); */
+    /* background-color:  #F4EEFF; */
+    border-radius: 5px;
+    padding: 0.5rem 1.3rem;
+}
+.newGoalSet{
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
+    width: 44vw;
+    padding-inline: auto;
+    padding: 0.5rem 2rem;
+    box-shadow: 2px 2px 2px 2px rgba(12, 5, 15, 0.2);
+    border-radius: 10px;
+}
+.newGoalSetHeading{
+    display: flex;
+    justify-content: space-between;
+    color: var(--primary);
+    font-weight: 500;
+}
+.leftSpan{
+    display: flex;
+    gap: 1.5rem;
+}
+.newGoalSetmain1{
+    margin: 0 2rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.goalTrackingSec{
+    display: none;
+}
+.labelInputdiv{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.labelInputdiv input, textarea{
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    padding: 0.3rem;
+}
+.labelInputdiv input:focus, textarea:focus{
+    outline: none;
+}
+.labelInputdiv input:hover, textarea:hover{
+    box-shadow: 2px 2px 2px 2px rgba(12, 5, 15, 0.2);
+    border: 2px solid var(--primary);
+}
+.btndiv button{
+    color: #fff;
+    background-color: var(--primary-light);
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    padding: 0.7rem 2rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+/* Daily statistics divs week1... */
+.goalTrackingSec{
+    width: 45vw;
+    height: 55%; 
+    padding-top: 2rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(44, 15, 68, 0.2);
+}
+.dailySta{
+    display: inline-block;
+    border-radius: 5px;
+    width: 45%;
+    margin-left: 3%;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(146, 120, 168, 0.25);
+}
+.dailySta img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+/* community section */
+.gtnavdiv{
+    display: flex;
+    justify-content: space-between;
+}
+.gtchildnavdiv{
+    display: inherit;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary);
+    font-size: 1.3rem;
+}
+.gtchildnavdiv img{
+    width: 80%;
+    height: 70%;
+}
+.gtnavdiv2{
+    padding-left: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+}
+.fsSmall{
+    font-size: small;
+}
+.communitypdiv{
+    padding-inline: 0 !important;
+}
+.gTCommunitymain{
+    width: 45vw;
+    height: 65vh;
+    overflow-y: scroll;
+    border-radius: 10px;
+    margin: 0 0 0.5rem 0.5rem;
+    box-shadow: 2px 2px 2px 2px rgba(146, 120, 168, 0.25);
+    display: none;
+}
+.gTCommunitymainJ{
+    width: 45vw;
+    height: 65vh;
+    overflow-y: scroll;
+    border-radius: 10px;
+    margin: 0 0 0.5rem 0.5rem;
+    box-shadow: 2px 2px 2px 2px rgba(146, 120, 168, 0.25);
+    display: none;
+}
+.gTCommunitymaindiv h4{
+    text-align: center;
+    width: 100% !important;
+}
+.cSearchicon{
+    position: absolute;
+    color: var(--gray);
+    font-size: 1.5rem;
+    top: 1.5rem;
+    left: 0.7rem;
+}
+.cSearchinp{
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    padding: 0.3rem 2.5rem;
+}
+.cSearchinp:focus{
+    outline: none;
+}
+.gTcommunity{
+    height: 30% !important;
+    background-color: inherit;
+}
+.gTCommunityText p{
+    height: 30% !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.gTCommunityText h5, .newGSetHeading{
+    color: var(--primary);
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.gTCommunityText a{
+    margin-left: 80%;
+}
+.gTCommunityText .gTBtndiv a{
+    margin-left: 0;
+}
+.gTBtndiv{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0 !important;
+}
+.leaveBtn{
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    padding: 0.8rem 1.3rem;
+    border-radius: 20px;
+    margin: 0.2rem;
+    font-weight: 500;
+}
+.vMoreBtn{
+    border: none;
+    background-color: var(--secondary);
+    color: var(--primaryTextColour);
+    padding: 0.8rem 1.3rem;
+    border-radius: 20px;
+    margin: 0.2rem;
+    font-weight: 500;
+}
